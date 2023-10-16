@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Btn } from "./components/Btn"
-import { Parrafo } from "./components/Parrafo"
-import { Titulo } from "./components/Titulo"
+import { Btn } from "../components/Btn"
+import { Parrafo } from "../components/Parrafo"
+import { Titulo } from "../components/Titulo"
 
 const ANECDOTAS = [
     { anecdota: 'If it hurts, do it more often', n_votos: 0 },

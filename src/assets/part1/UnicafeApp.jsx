@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react"
-import { Btn } from "./components/Btn";
-import { Titulo } from "./components/Titulo";
+import { Btn } from "../components/Btn";
+import { Titulo } from "../components/Titulo";
 
 const DatoEstadistica = ({ titulo, dato, s_medida }) => {
 

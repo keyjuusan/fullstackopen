@@ -1,12 +1,15 @@
 import  {createRoot } from "react-dom/client";
 import { StrictMode } from "react";
-import { AnecdotaApp } from "./part1/AnecdotaApp";
+import { CursoInfo } from "./part1/CursoInfo";
+
+// import { UnicafeApp } from "./part1/UnicafeApp";
+// import { AnecdotaApp } from "./part1/AnecdotaApp";
 
 createRoot(document.querySelector("#root")).render(
     <StrictMode>
-        <AnecdotaApp />
-
+        <CursoInfo />
         {/* <UnicafeApp /> */}
+        {/* <AnecdotaApp /> */}
     </StrictMode>
 
 
