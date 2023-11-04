@@ -3,13 +3,11 @@ import { useState } from "react"
 export const Total = ({partes})=>{
     const [nEjercicios, setNEjercicios] = useState(0)
 
-    let acumulado = 0;
-    partes.map(part=>{
-        acumulado += part.exercises
-    })
+    let total = partes.reduce((pv,cv)=>pv + cv.exercises,0)
+    console.log(total)
 
-    if(nEjercicios != acumulado){
-        setNEjercicios(acumulado)
+    if(nEjercicios != total){
+        setNEjercicios(total)
     }
 
     return (

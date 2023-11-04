@@ -1,5 +1,5 @@
-export const Header = ({curso})=>{
+export const Header = ({nombreCurso})=>{
     return(
-        <h1>{curso}</h1>
+        <h1>{nombreCurso}</h1>
     )
 }
