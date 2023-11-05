@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import crud from "./CrudAxiosTelefonica.jsx"
 
-export const PersonForm = ({ persons, setPersons }) => {
+export const PersonForm = ({ persons, setPersons, setMensaje }) => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
 
@@ -35,13 +35,23 @@ export const PersonForm = ({ persons, setPersons }) => {
 
         if (!cAgrega) {
 
-            if (window.confirm(`el contacto de ${newName} ya ha sido agregado. ¿Desea actualizar el numero de telefono?`)) {
+            if (window.confirm(`el contacto de ${newPerson.name} ya ha sido agregado. ¿Desea actualizar el numero de telefono?`)) {
                 crud.actualizar(idPerson, newPerson)
                     .then(() => {
                         crud.consultar()
-                            .then((res)=>{
+                            .then((res) => {
                                 setPersons(res.data)
                             })
+                        setMensaje({mensaje:`Los datos de ${newPerson.name} han sido actualizados`,bol:true})
+                        setTimeout(() => {
+                            setMensaje({mensaje:"",bol:true})
+                        }, 3000);
+                    })
+                    .catch(() => {
+                        setMensaje({mensaje:`Error al actualizar el contacto`,bol:false})
+                        setTimeout(() => {
+                            setMensaje({mensaje:"",bol:false})
+                        }, 3000);
                     })
             }
         } else {
@@ -50,6 +60,16 @@ export const PersonForm = ({ persons, setPersons }) => {
                     setPersons(persons.concat(res.data))
                     setNewName('')
                     setNewNumber('')
+                    setMensaje({mensaje:`${newPerson.name} ha sido añadido a los contactos`,bol:true})
+                    setTimeout(() => {
+                        setMensaje({mensaje:"",bol:true})
+                    }, 3000);
+                })
+                .catch(() => {
+                    setMensaje({mensaje:`Error al registrar el contacto`,bol:false})
+                    setTimeout(() => {
+                        setMensaje({mensaje:"",bol:false})
+                    }, 3000);
                 })
         }
 

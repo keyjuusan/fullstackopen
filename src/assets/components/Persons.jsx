@@ -1,12 +1,24 @@
 import crud from "./CrudAxiosTelefonica"
 
-export const Persons = ({ personsFilter,setPersons }) => {
-    
-    const eliminarPersona = (event,personId,personName)=>{
-        
-        if(window.confirm(`Está seguro de que desea eliminar a ${personName}`)){
+export const Persons = ({ personsFilter, setPersons, setMensaje }) => {
+
+    const eliminarPersona = (event, personId, personName) => {
+
+        if (window.confirm(`Está seguro de que desea eliminar a ${personName}`)) {
             crud.eliminar(personId)
-            .then(res=>crud.consultar().then(r=>setPersons(r.data)))
+                .then(() => {
+                    crud.consultar().then(res => setPersons(res.data))
+                    setMensaje({mensaje:`Contacto eliminado correctamente.`, bol:true})
+                    setTimeout(() => {
+                        setMensaje({mensaje:"",bol:true})
+                    }, 3000);
+                })
+                .catch(() => {
+                    setMensaje({mensaje:`El contacto no se pudo elimiar debido a un error.`, bol:false})
+                    setTimeout(() => {
+                        setMensaje({mensaje:"",bol:false})
+                    }, 3000);
+                })
         }
     }
 
@@ -16,7 +28,7 @@ export const Persons = ({ personsFilter,setPersons }) => {
             (
                 <li key={parseInt(person.id)}>
                     {person.name} {person.number}
-                    <button type="button" onClick={(e)=>{eliminarPersona(e,parseInt(person.id),person.name)}}>Eliminar</button>
+                    <button type="button" onClick={(e) => { eliminarPersona(e, parseInt(person.id), person.name) }}>Eliminar</button>
                 </li>
             ))}
         </ul>
