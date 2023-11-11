@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-import crud from "./CrudAxiosTelefonica.jsx"
+import crud from "./CrudAxiosTelefonica"
 
 export const PersonForm = ({ persons, setPersons, setMensaje }) => {
     const [newName, setNewName] = useState('')

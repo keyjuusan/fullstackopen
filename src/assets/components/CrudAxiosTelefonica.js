@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBase = "http://localhost:3001/persons"
+const urlBase = "http://localhost:3002/api/personas"
 
 const consultar = ()=>{
     return axios.get(urlBase)

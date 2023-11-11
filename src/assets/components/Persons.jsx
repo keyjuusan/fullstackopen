@@ -6,8 +6,8 @@ export const Persons = ({ personsFilter, setPersons, setMensaje }) => {
 
         if (window.confirm(`Está seguro de que desea eliminar a ${personName}`)) {
             crud.eliminar(personId)
-                .then(() => {
-                    crud.consultar().then(res => setPersons(res.data))
+                .then((res) => {
+                    crud.consultar().then((res )=> {setPersons(res.data)})
                     setMensaje({mensaje:`Contacto eliminado correctamente.`, bol:true})
                     setTimeout(() => {
                         setMensaje({mensaje:"",bol:true})
