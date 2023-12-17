@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBase = "http://localhost:3002/api/personas"
+const urlBase = "https://agenda-express-wuqe.onrender.com/api/personas"
 
 const consultar = ()=>{
     return axios.get(urlBase)
